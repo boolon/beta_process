@@ -15,9 +15,15 @@ class BetaHat:
         assert len(omegas) == len(ps)
         for i in range(len(omegas)):
             self.add_one(omegas[i], ps[i])
+    def draw_bernouli_process(self):
+        result = []
+        for el in self.mesure:
+            if np.random.random()<self.mesure[el]:
+                result.append(el)
+        return result
 
-def b0_discrete(K):
-    return np.random.randint(0, 10, size = K)
+def b0_discrete(K, n = 10):
+    return np.random.randint(0, n, size = K)/n
 
 def b0_continuous(K):
     return np.random.random(size = K)
@@ -36,5 +42,8 @@ def beta_process(B0, c, gamma, N = 2000):
         step(c,n,B0, betahat)
     return betahat
 
-def bernoulli_process(B0, c, gamma):
+def associated_bernoulli_process(B0, c, gamma, n = 20):
     B = beta_process(B0, c, gamma)
+    result = []
+    for i in range(n):
+        result.append(B.draw_bernouli_process())
