@@ -1,3 +1,10 @@
 Implementation of the beta process algorithm from the following paper :
 
 Thibaux, Romain & Jordan, Michael. (2007). Hierarchical Beta Processes and the Indian Buffet Process. Journal of Machine Learning Research - Proceedings Track. 2. 564-571.
+
+Only the sampled example of the bernoulli process are represented in the draw function. But the probability distribution could be represented later.
+
+The use is :
+> python main.py -c $C -g $GAMMA -n N
+
+Where C is the concentration parameter, GAMMA is the mass parameter, and N is the number of experiment per graph.
