@@ -11,7 +11,7 @@ class BetaHat:
         else:
             self.mesure[w] = p
         self.gamma += p
-        
+
     def add(self, omegas, ps):
         assert len(omegas) == len(ps)
         for i in range(len(omegas)):
@@ -47,7 +47,7 @@ def step(c, n, B0, gamma, betahat):
 def beta_process(B0, c, gamma, N = 2000):
     betahat = BetaHat()
     for n in range(1,N+1):
-        step(c,n,B0, betahat)
+        step(c,n,B0, gamma, betahat)
     return betahat
 
 def associated_bernoulli_process(B0, c, gamma, n = 20):
@@ -55,3 +55,4 @@ def associated_bernoulli_process(B0, c, gamma, n = 20):
     result = []
     for i in range(n):
         result.append(B.draw_bernouli_process())
+    return result
